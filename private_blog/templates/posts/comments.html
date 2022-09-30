@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Комментарии к статье "{{ post.id }}"{% endblock %}
+{% block content %}
+  <main class="container py-3">
+    <div class="row g-5">
+      <div class="col-md-8">
+        {% include "postcard.html" with post=post %}
+        <h3  class="mb-4">Комментарии:</h3>
+        {% for comment in page %}
+          {% include "comment_card.html" with comment=comment %}
+        {% endfor %}
+        {% load post_custom_tags %}
+        {% if user.is_authenticated %}
+          <div class="card my-4 shadow-sm">
+            <form method="post" action="{% url 'add_comment' post_id=post.id %}">
+              {% csrf_token %}
+              <h6 class="card-header text-secondary">Добавить комментарий:</h6>
+              <div class="card-body">
+                <div class="form-group mb-2">
+                  {{ form.comment_text|addclass:"form-control" }}
+                </div>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+              </div>
+            </form>
+          </div>
+        {% endif %}
+        {% include "paginator.html" %}
+      </div>
+      {% include "also_section.html" with also_list=also_list %}
+    </div>
+  </main>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+  <main>
+    <section class="mb-3 text-left container-fluid bg-warning">
+        <div class="row py-3">
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            {% load static %}
+            <img src="{% static 'posts/index-image.jpg' %}" class="img-fluid d-none d-sm-flex" alt="MyPhoto">
+          </div>
+          <div class="col-sm-6 col-md-8 col-lg-7">
+            <h1 class="fw-light">Мысли о программировании и не только</h1>
+            <p class="lead text-muted">Добро пожаловать на мою страничку. Здесь вы найдете мои заметки обо мне и о моем пути в программировании.</p>
+          </div>
+        </div>
+    </section>
+
+    <section class="container-fluid">
+      <div class="row mb-2">
+        {# {% load cache %} #}
+        {# {% cache 10 index_page %} #}
+          {% for post in page %}
+            <div class="col-md-6">
+              {% include "postcard.html" with post=post %}
+            </div>
+          {% endfor %}
+        {# {% endcache %} #}
+        {% include "paginator.html" %}
+      </div>
+    </section>
+  </main>
+  
+{% endblock %}

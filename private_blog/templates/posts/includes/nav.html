@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="container-fluid">
+      <p class="navbar-brand mb-2 mb-lg-0">Kost<span 
+       style="color:cornflowerblue">KH</p>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{% url 'index' %}">Главная страница</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="visitor-menu" data-bs-toggle="dropdown" aria-expanded="false">Личный кабинет</a>
+          <ul class="dropdown-menu" aria-labelledby="visitor-menu">
+            <li><a class="dropdown-item" href="{% url 'private_cabinet' %}">Учетные данные</a></li>
+            <li><a class="dropdown-item" href="{% url 'favourite' %}">Понравившиеся статьи</a></li>
+            <li><a class="dropdown-item" href="{% url 'my_comments' %}">Мои комментарии</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'messages' %}">Сообщение автору</a>
+        </li>
+        {% if user.is_staff %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="visitor-menu" data-bs-toggle="dropdown" aria-expanded="false">Кабинет автора</a>
+          <ul class="dropdown-menu" aria-labelledby="visitor-menu">
+            <li><a class="dropdown-item" href="{% url 'post_management' %}">Управление публикациями</a></li>
+            <li><a class="dropdown-item" href="{% url 'message_reply' %}">Сообщения</a></li>
+          </ul>
+        </li>
+        {% endif %}
+      </ul>
+
+      <ul class="navbar-nav col-auto mb-2 mb-lg-0">
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Выход</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Вход</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'signup' %}">Регистрация</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

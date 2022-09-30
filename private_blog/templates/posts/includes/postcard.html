@@ -1,0 +1,29 @@
+<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-230 position-relative">
+
+  <div class="col p-4 d-flex flex-column position-static overflow-hidden">
+    <h4 class="mb-0">{{ post.title }}</h4>
+    <div class="mb-1 text-muted">{{ post.pub_date|date:'d M Y' }} г.</div>
+    <p class="0">{{ post.subheader }}</p>
+    <div class="row">
+      <div class="col-auto text-start">
+        <a href="{% url 'post_view' post.id %}" 
+          class="stretched-link">Читать дальше...</a>
+      </div>
+      
+      <div class="col d-block text-end text-primary">
+        {% include "likes_comments.html" with post=post%}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto d-none d-lg-block">
+    <div class="text-center bg-secondary"
+    style="height: 230px; width: 173px">
+    {% load thumbnail %}
+    {% thumbnail post.image "225x300" crop="center" upscale=True as im %}
+      <img class="card-img" src="{{ im.url }}">
+    {% endthumbnail %}
+    </div>
+  </div>
+
+</div>

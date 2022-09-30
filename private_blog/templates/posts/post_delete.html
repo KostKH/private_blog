@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Удаление статьи "{{ post.id }}"{% endblock %}
+{% block content %}
+  <main class="container py-3">
+    <div class="row g-5">
+      <div class="col-md-8">
+        {% include "postcard.html" with post=post %}
+        <div class="row text-center justify-content-center">
+          <div class="col-8">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-header text-light bg-secondary">
+                Вы уверены, что хотите удалить статью?
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <form action="{% url 'post_delete' post.id %}" method="post">
+                      {% csrf_token %}
+                      <input class="btn btn-danger shadow-sm" type="submit" value="Удалить">
+                    </form>
+                  </div>
+                  <div class="col">
+                    <a href="{% url 'post_management' %}" class="btn btn-success shadow-sm" type="button">Оставить</a>
+                  </div>
+                </div>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+{% endblock %}

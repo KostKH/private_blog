@@ -1,0 +1,17 @@
+{% load post_custom_tags %}
+<div class="card my-4 shadow-sm">
+  {% if chosen_user %}
+  <form method="post" action="{% url 'add_reply' chosen_user.id %}">
+  {% else %}
+  <form method="post" action="{% url 'add_message' %}">
+  {% endif %}
+    {% csrf_token %}
+    <h6 class="card-header text-secondary">Новое сообщение:</h6>
+    <div class="card-body">
+      <div class="form-group mb-2">
+        {{ form.message_text|addclass:"form-control" }}
+      </div>
+      <button type="submit" class="btn btn-primary">Отправить</button>
+    </div> 
+  </form>
+</div>

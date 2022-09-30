@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Личный кабинет{% endblock %}
+{% block content %}
+  <main class="container py-3">
+    <div class="row g-5">
+      <div class="col-md-8">
+        <h3  class="mb-4">Личный кабинет:</h3>
+        <div class="card shadow-sm mb-4">
+          <h4  class="card-header text-secondary text-center">Учетные данные:</h4>
+          <div class="card-body">
+            <div class="row g-5">
+              <div class="col-6">
+                <p class="text-end">Имя:</p>
+              </div>
+              <div class="col-6">
+                <p>{{ user.first_name }}</p>
+              </div>
+            </div>
+            <div class="row g-5">
+              <div class="col-6">
+                <p class="text-end">Фамилия:</p>
+              </div>
+              <div class="col-6">
+                <p>{{ user.last_name }}</p>
+              </div>
+            </div>
+            <div class="row g-5">
+              <div class="col-6">
+                <p class="text-end">Ник:</p>
+              </div>
+              <div class="col-6">
+                <p>{{ user.username }}</p>
+              </div>
+            </div>
+            <div class="row g-5">
+              <div class="col-6">
+                <p class="text-end">Электронная почта:</p>
+              </div>
+              <div class="col-6">
+                <p>{{ user.email }}</p>
+              </div>
+            </div>
+            <div class="text-center">
+              <a
+              class="btn btn-md btn-warning shadow-sm"
+              href="{% url 'user_update' %}" role="button">
+              Изменить данные
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card shadow-sm mb-4">
+        <h4  class="card-header text-secondary text-center">Пароль:</h4>
+          <div class="card-body">
+            <div class="text-center">
+              <a
+              class="btn btn-md btn-warning shadow-sm"
+              href="{% url 'password_change' %}" role="button">
+              Изменить пароль
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% include "also_section.html" with also_list=also_list %}
+    </div>
+  </main>
+{% endblock %}

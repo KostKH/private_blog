@@ -1,0 +1,8 @@
+<div class="card mb-4 shadow-sm">
+  <div class="card-header text-secondary">
+    {{ comment.author }}, {{ comment.created|time:"H:i"}}, {{ comment.created|date:"d M Y" }}
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{ comment.comment_text|linebreaksbr }}</p>
+  </div>
+</div>
