@@ -62,7 +62,7 @@ jobs:
           script: |
             cd private_blog
             sudo docker-compose stop
-            sudo docker-compose rm web
+            sudo docker-compose rm -f web
             touch .env
             echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
@@ -78,8 +78,13 @@ jobs:
             echo EMAIL_PORT=${{ secrets.EMAIL_PORT }} >> .env
             echo EMAIL_USE_TLS=${{ secrets.EMAIL_USE_TLS }} >> .env
             echo CSRF_TRUSTED_ORIGINS=${{ secrets.CSRF_TRUSTED_ORIGINS }} >> .env
+            sudo docker-compose pull web
             sudo docker-compose up --detach
-
+            sudo docker-compose exec web python manage.py collectstatic --no-input
+            sudo docker-compose exec web python manage.py makemigrations
+            sudo docker-compose exec web python manage.py migrate
+            sudo docker-compose stop
+            sudo docker-compose start
 
   send_message:
     runs-on: ubuntu-latest
