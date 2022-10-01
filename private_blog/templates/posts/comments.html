@@ -12,14 +12,20 @@
         {% load post_custom_tags %}
         {% if user.is_authenticated %}
           <div class="card my-4 shadow-sm">
-            <form method="post" action="{% url 'add_comment' post_id=post.id %}">
+            <form
+              method="post" 
+              action="{% url 'add_comment' post_id=post.id %}">
               {% csrf_token %}
-              <h6 class="card-header text-secondary">Добавить комментарий:</h6>
+              <h6 class="card-header text-secondary">
+                Добавить комментарий:
+              </h6>
               <div class="card-body">
                 <div class="form-group mb-2">
                   {{ form.comment_text|addclass:"form-control" }}
                 </div>
-                <button type="submit" class="btn btn-primary">Отправить</button>
+                <button type="submit" class="btn btn-primary">
+                  Отправить
+                </button>
               </div>
             </form>
           </div>

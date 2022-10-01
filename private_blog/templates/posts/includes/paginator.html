@@ -29,9 +29,8 @@
       {% endfor %}
       {% if page.has_next %}
         <li class="page-item">
-          <a
-            class="page-link"
-            href="?page={{ page.next_page_number }}">Следующая &raquo;</a>
+          <a class="page-link" href="?page={{ page.next_page_number }}"
+          >Следующая &raquo;</a>
         </li>
       {% else %}
         <li class="page-item disabled">

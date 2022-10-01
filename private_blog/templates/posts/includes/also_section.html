@@ -6,8 +6,11 @@
         <div class="p-4 mb-3 bg-light rounded position-relative">
           <h5>{{ post.title }}</h5>
           <p class="mb-0">{{ post.subheader }}</p>
-          <a href="{% url 'post_view' post.id %}" 
-            class="stretched-link">Читать...</a>
+          <a
+            href="{% url 'post_view' post.id %}" 
+            class="stretched-link">
+            Читать...
+            </a>
         </div>
       {% endfor %}
     </div>

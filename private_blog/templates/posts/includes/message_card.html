@@ -2,9 +2,13 @@
   {% if message.direction == other_side %}
     <div class="col-8 text-break border rounded p-2 mb-4 shadow-sm">
   {% else %}
-    <div class="col-8 text-break border rounded p-2 mb-4 shadow-sm offset-4 bg-info">
+    <div class="col-8 text-break border rounded
+      p-2 mb-4 shadow-sm offset-4 bg-info">
   {% endif %}
       <p>{{ message.message_text|linebreaksbr }}</p>
-      <p class="text-end text-secondary">{{ message.send_time|time:"H:i"}}, {{ message.send_time|date:"d M Y" }}</p>
+      <p class="text-end text-secondary">
+        {{ message.send_time|time:"H:i"}},
+        {{ message.send_time|date:"d M Y" }}
+      </p>
     </div>
 </div>

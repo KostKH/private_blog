@@ -1,4 +1,5 @@
-<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-230 position-relative">
+<div class="row g-0 border rounded overflow-hidden
+  flex-md-row mb-4 shadow-sm h-md-230 position-relative">
 
   <div class="col p-4 d-flex flex-column position-static overflow-hidden">
     <h4 class="mb-0">{{ post.title }}</h4>
@@ -6,8 +7,11 @@
     <p class="0">{{ post.subheader }}</p>
     <div class="row">
       <div class="col-auto text-start">
-        <a href="{% url 'post_view' post.id %}" 
-          class="stretched-link">Читать дальше...</a>
+        <a
+          href="{% url 'post_view' post.id %}"
+          class="stretched-link">
+          Читать дальше...
+        </a>
       </div>
       
       <div class="col d-block text-end text-primary">

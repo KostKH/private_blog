@@ -4,20 +4,35 @@
   <main class="container py-3">
     <div class="row g-5">
       <div class="col-md-4">
-        <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
-            <span class="fs-5 fw-semibold">Диалоги:</span>
+        <div class="d-flex flex-column align-items-stretch
+          flex-shrink-0 bg-white">
+            <span class="fs-5 fw-semibold">
+              Диалоги:
+            </span>
             <hr>
           <div class="list-group list-group-flush border-bottom">
             {% for interlocutor in interlocutors %}
               {% if interlocutor == chosen_user %}
-                <a href="{% url 'message_reply_id' interlocutor.id %}" class="list-group-item list-group-item-action active py-3 lh-sm" aria-current="true">
+                <a
+                  href="{% url 'message_reply_id' interlocutor.id %}"
+                  class="list-group-item list-group-item-action
+                    active py-3 lh-sm"
+                  aria-current="true">
               {% else %}
-                <a href="{% url 'message_reply_id' interlocutor.id %}" class="list-group-item list-group-item-action py-3 lh-sm">
+                <a
+                  href="{% url 'message_reply_id' interlocutor.id %}"
+                  class="list-group-item list-group-item-action py-3 lh-sm">
               {% endif %}
-                  <div class="d-flex w-100 align-items-center justify-content-between">
-                    <strong class="mb-1">{{ interlocutor.username }}</strong>
+                  <div class="d-flex w-100 align-items-center
+                    justify-content-between">
+                    <strong class="mb-1">
+                      {{ interlocutor.username }}
+                    </strong>
                   </div>
-                  <div class="col-10 mb-1 small">{{ interlocutor.get_full_name }}, {{ interlocutor.email }}</div>
+                  <div class="col-10 mb-1 small">
+                    {{ interlocutor.get_full_name }},
+                    {{ interlocutor.email }}
+                  </div>
                 </a>
             {% endfor %}
           </div>
@@ -25,7 +40,9 @@
       </div>
       <div class="col-md-7">
         {% if chosen_user %}
-          <h5  class="mb-4">Диалог с {{ chosen_user }}:</h5>
+          <h5  class="mb-4">
+            Диалог с {{ chosen_user }}:
+          </h5>
           <hr>
           {% for message in page %}
             {% include "message_card.html" with message=message other_side=other_side %}

@@ -14,13 +14,23 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col">
-                    <form action="{% url 'post_delete' post.id %}" method="post">
+                    <form
+                      action="{% url 'post_delete' post.id %}"
+                      method="post">
                       {% csrf_token %}
-                      <input class="btn btn-danger shadow-sm" type="submit" value="Удалить">
+                      <input
+                        class="btn btn-danger shadow-sm"
+                        type="submit"
+                        value="Удалить">
                     </form>
                   </div>
                   <div class="col">
-                    <a href="{% url 'post_management' %}" class="btn btn-success shadow-sm" type="button">Оставить</a>
+                    <a
+                      href="{% url 'post_management' %}"
+                      class="btn btn-success shadow-sm"
+                      type="button">
+                      Оставить
+                    </a>
                   </div>
                 </div>  
               </div>

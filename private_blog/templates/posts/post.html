@@ -10,7 +10,11 @@
           <hr>
           {% load thumbnail %}
           {% thumbnail post.image "300x300" crop="center" upscale=True as im %}
-            <img src="{{ im.url }}" class="rounded float-end" height="250" alt="картинка к статье">
+            <img
+              src="{{ im.url }}"
+              class="rounded float-end"
+              height="250"
+              alt="картинка к статье">
           {% endthumbnail %}
           <p>{{ post.text|linebreaksbr }}</p>
 
