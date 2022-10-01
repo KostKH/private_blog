@@ -36,4 +36,6 @@ urlpatterns = [
          name='message_reply_id'),
     path('message-reply/<int:chosen_user_id>/add_reply/', views.add_reply,
          name='add_reply'),
+    path('about/', views.about,
+         name='about'),
 ]

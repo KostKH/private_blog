@@ -17,9 +17,9 @@
         </article>
         <div>
           {% include "likes_comments.html" with post=post %}
+        </div>
       </div>
-
+      {% include "also_section.html" with also_list=also_list %}
     </div>
-    {% include "also_section.html" with also_list=also_list %}
   </main>
 {% endblock %}

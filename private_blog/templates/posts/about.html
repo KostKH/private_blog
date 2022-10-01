@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+  <main class="container py-3">
+    <div class="row g-5">
+      <div class="col-md-8">
+        <article class="blog-post">
+          <h2 class="blog-post-title">Обо мне:</h2>
+          <hr>
+          {% load static %}
+          <img src="{% static 'posts/about-image.jpg' %}" class="rounded float-end" height="250" alt="image of me">
+          <p class="pe-2">Меня зовут Харьков Константин, и я - Python-разработчик.</p>
+          <p class="mb-0 pe-2"><u>Мой стек на текущий момент:</u></p>
+          <p class="pe-2"><em>Python, Django, Django REST Framework, Unittest, PostgreSQL,
+            Docker, Yandex.Cloud, HTML, CSS, Nginx, Linux</em></p>
+          <p class="pe-2">Я прошёл обучение в Яндекс Практикуме по курсу "Python-
+            разработчик", где мы учились программированию - со спринтами,
+            код-ревью и другими атрибутами промышленной разработки.</p>
+          <p class="pe-2">В настоящее время я делаю Pet-проекты и веду этот блог.</p>
+          <p class="mb-0"><strong>Мои контакты:</strong></p>
+          <p class="mb-0">email: <a href="mailto:kostya.kharkov79@gmail.com">kostya.kharkov79@gmail.com</a></p>
+          <p class="mb-0">LinkedIn: <a href="https://www.linkedin.com/in/kostkh">https://www.linkedin.com/in/kostkh</a></p>
+          <p class="mb-0">Telegram: <a href="https://t.me/kostkh">@kostkh</a></p>
+          <p class="mb-0">Github: <a href="https://github.com/KostKH">https://github.com/KostKH</a></p>
+          <p class="mb-0">Хабр Карьера: <a href="https://career.habr.com/kostkh">https://career.habr.com/kostkh</a></p>
+        </article>
+      </div>
+      {% include "also_section.html" with also_list=also_list %}
+    </div>
+  </main>
+{% endblock %}

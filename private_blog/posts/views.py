@@ -293,3 +293,13 @@ def page_not_found(request, exception=None):
 def server_error(request):
     """Функция возвращает сгенерированную страницу для ошибки 500."""
     return render(request, "posts/misc/500.html", status=500)
+
+
+def about(request):
+    """Функция возвращает сгенерированную страницу
+    с моими контакнтыми данными."""
+    also_list = get_also_list()
+    context = {
+        'also_list': also_list,
+    }
+    return render(request, 'posts/about.html', context)

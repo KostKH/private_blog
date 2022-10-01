@@ -83,8 +83,8 @@ jobs:
             sudo docker-compose exec web python manage.py collectstatic --no-input
             sudo docker-compose exec web python manage.py makemigrations
             sudo docker-compose exec web python manage.py migrate
-            sudo docker-compose stop
-            sudo docker-compose start
+            sudo docker-compose stop web
+            sudo docker-compose start web
 
   send_message:
     runs-on: ubuntu-latest
@@ -97,4 +97,3 @@ jobs:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: ${{ github.workflow }} успешно выполнен!
-
