@@ -77,6 +77,13 @@
             <li>
               <a
                 class="dropdown-item"
+                href="{% url 'new_post' %}">
+                Новая статья
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
                 href="{% url 'post_management' %}">
                 Управление публикациями
               </a>
@@ -86,6 +93,13 @@
                 class="dropdown-item"
                 href="{% url 'message_reply' %}">
                 Сообщения
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="/admin/">
+                Админка
               </a>
             </li>
           </ul>
