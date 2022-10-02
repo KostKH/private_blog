@@ -13,7 +13,6 @@ class PostAdmin(admin.ModelAdmin):
         'modify_date',
         'title',
         'subheader',
-        'text',
     )
     search_fields = ('title', 'subheader', 'text',)
     list_filter = ('pub_date',)
