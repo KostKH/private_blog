@@ -137,4 +137,7 @@ media/
 #Deployment files
 infra/
 
+# Materials for articles
+articles/
+
 

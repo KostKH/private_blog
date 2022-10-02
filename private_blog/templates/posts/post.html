@@ -16,7 +16,7 @@
               height="250"
               alt="картинка к статье">
           {% endthumbnail %}
-          <p>{{ post.text|linebreaksbr }}</p>
+          <p>{{ post.text|safe|linebreaksbr }}</p>
 
         </article>
         <div>
