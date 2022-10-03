@@ -9,11 +9,11 @@ class Post(models.Model):
 
     title = models.CharField(
         verbose_name='Заголовок статьи',
-        max_length=50
+        max_length=60
     )
     subheader = models.CharField(
         verbose_name='Подзаголовок статьи',
-        max_length=100
+        max_length=150
     )
     text = models.TextField(
         verbose_name='Текст статьи',
