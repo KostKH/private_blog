@@ -1,5 +1,4 @@
 from django.test import TestCase
-
 from posts.models import Comment, Favourite, Message, Post, User
 
 
@@ -63,7 +62,7 @@ class PostsModelsTest(TestCase):
                     item._meta.get_field(field).verbose_name,
                     expected_value
                 )
-    
+
     def test_comment_count_for_post(self):
         """Проверяем, что кол-во комментариев к посту правильно считается."""
         self.assertEqual(self.post.comment_count(), 2)

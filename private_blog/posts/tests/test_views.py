@@ -1,10 +1,10 @@
 import shutil
+
 from django.conf import settings
-from django import forms
 from django.core.cache import cache
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import Client, TestCase
 from django.urls import reverse
-from django.core.files.uploadedfile import SimpleUploadedFile
 from posts.models import Comment, Favourite, Message, Post, User
 
 
@@ -75,15 +75,15 @@ class PostsViewsTests(TestCase):
         cache.clear()
         templates_pages_names = [
             ('posts/index.html', reverse('index')),
-            ('posts/post.html', reverse('post_view',args=[self.post.id])),
-            ('posts/comments.html', reverse('comments',args=[self.post.id])),
+            ('posts/post.html', reverse('post_view', args=[self.post.id])),
+            ('posts/comments.html', reverse('comments', args=[self.post.id])),
             ('posts/my_comments.html', reverse('my_comments')),
             ('posts/favourite.html', reverse('favourite')),
             ('posts/messages.html', reverse('messages')),
             ('posts/private_cabinet.html', reverse('private_cabinet')),
             ('posts/post_management.html', reverse('post_management')),
             ('posts/new.html', reverse('new_post')),
-            ('posts/new.html', reverse('post_update',args=[self.post.id])),
+            ('posts/new.html', reverse('post_update', args=[self.post.id])),
             ('posts/post_delete.html', reverse('post_delete',
                                                args=[self.post.id])),
             ('posts/message_reply.html', reverse('message_reply')),
