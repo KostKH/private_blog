@@ -30,7 +30,7 @@ urlpatterns = [
          name='post_delete'),
     path('post-management/<int:post_id>/update/', views.post_update,
          name='post_update'),
-    path('message-reply', views.message_reply,
+    path('message-reply/', views.message_reply,
          name='message_reply'),
     path('message-reply/<int:chosen_user_id>/', views.message_reply,
          name='message_reply_id'),

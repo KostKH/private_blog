@@ -284,15 +284,15 @@ def page_not_found(request, exception=None):
     """Функция возвращает сгенерированную страницу для ошибки 404."""
     return render(
         request,
-        "posts/misc/404.html",
-        {"path": request.path},
+        'posts/misc/404.html',
+        {'path': request.path},
         status=404
     )
 
 
 def server_error(request):
     """Функция возвращает сгенерированную страницу для ошибки 500."""
-    return render(request, "posts/misc/500.html", status=500)
+    return render(request, 'posts/misc/500.html', status=500)
 
 
 def about(request):
