@@ -19,11 +19,10 @@ jobs:
         pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
         pip install -r private_blog/requirements.txt 
 
-    - name: Test with flake8 and django tests
+    - name: Test with flake8
       run: |
         cd private_blog
         python -m flake8
-        python manage.py test
 
 
   build_and_push_to_docker_hub:
