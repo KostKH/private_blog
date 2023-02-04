@@ -18,9 +18,10 @@ jobs:
         python -m pip install --upgrade pip 
         pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
         pip install -r private_blog/requirements.txt
-        export ACTIONS_TESTS=True 
 
     - name: Test with flake8
+      with:
+        script: export ACTIONS_TESTS=True
       run: |
         cd private_blog
         python -m flake8
