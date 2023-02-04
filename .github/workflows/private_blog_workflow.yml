@@ -22,7 +22,7 @@ jobs:
     - name: Test with flake8
       run: |
         export ACTIONS_TESTS=True
-        echo $ACTIONS_TESTS
+        export SECRET_KEY=${{ secrets.SECRET_KEY }}
         cd private_blog
         python -m flake8
         python manage.py test
