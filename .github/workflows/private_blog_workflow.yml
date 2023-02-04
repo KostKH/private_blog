@@ -23,7 +23,7 @@ jobs:
       run: |
         cd private_blog
         python -m flake8
-
+        python manage.py test
 
   build_and_push_to_docker_hub:
       name: Push Docker image to Docker Hub
