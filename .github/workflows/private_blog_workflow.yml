@@ -20,9 +20,9 @@ jobs:
         pip install -r private_blog/requirements.txt
 
     - name: Test with flake8
-      with:
-        script: export ACTIONS_TESTS=True
       run: |
+        export ACTIONS_TESTS=True
+        echo $ACTIONS_TESTS
         cd private_blog
         python -m flake8
         python manage.py test
