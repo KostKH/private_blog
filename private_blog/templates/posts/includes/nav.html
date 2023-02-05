@@ -3,8 +3,8 @@
       <a 
         class="navbar-brand mb-2 mb-lg-0"
         href="{% url 'index' %}">
-        Kost<span style="color:cornflowerblue">KH
-      </a>
+        Kost<span style="color:cornflowerblue"
+      >KH</a>
     <button 
       class="navbar-toggler"
       type="button"
@@ -21,9 +21,8 @@
           <a
             class="nav-link"
             aria-current="page"
-            href="{% url 'index' %}">
-            Главная страница
-          </a>
+            href="{% url 'index' %}"
+          >Главная страница</a>
         </li>
         <li class="nav-item dropdown">
           <a
@@ -37,32 +36,28 @@
             <li>
               <a
                 class="dropdown-item"
-                href="{% url 'private_cabinet' %}">
-                Учетные данные
-              </a>
+                href="{% url 'private_cabinet' %}"
+              >Учетные данные</a>
             </li>
             <li>
               <a
                 class="dropdown-item"
-                href="{% url 'favourite' %}">
-                Понравившиеся статьи
-              </a>
+                href="{% url 'favourite' %}"
+              >Понравившиеся статьи</a>
             </li>
             <li>
               <a 
                 class="dropdown-item"
-                href="{% url 'my_comments' %}">
-                Мои комментарии
-              </a>
+                href="{% url 'my_comments' %}"
+              >Мои комментарии</a>
             </li>
           </ul>
         </li>
         <li class="nav-item">
           <a
             class="nav-link"
-            href="{% url 'messages' %}">
-            Сообщение автору
-          </a>
+            href="{% url 'messages' %}"
+          >Сообщение автору</a>
         </li>
         {% if user.is_staff %}
         <li class="nav-item dropdown">
@@ -77,30 +72,26 @@
             <li>
               <a
                 class="dropdown-item"
-                href="{% url 'new_post' %}">
-                Новая статья
-              </a>
+                href="{% url 'new_post' %}"
+              >Новая статья</a>
             </li>
             <li>
               <a
                 class="dropdown-item"
-                href="{% url 'post_management' %}">
-                Управление публикациями
-              </a>
+                href="{% url 'post_management' %}"
+              >Управление публикациями</a>
             </li>
             <li>
               <a
                 class="dropdown-item"
-                href="{% url 'message_reply' %}">
-                Сообщения
-              </a>
+                href="{% url 'message_reply' %}"
+              >Сообщения</a>
             </li>
             <li>
               <a
                 class="dropdown-item"
-                href="/admin/">
-                Админка
-              </a>
+                href="/admin/"
+              >Админка</a>
             </li>
           </ul>
         </li>

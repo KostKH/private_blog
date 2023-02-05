@@ -47,7 +47,7 @@ class PostsViewsTests(TestCase):
         for number in range(20):
             post = Post.objects.create(
                 title=f'Статья {number} для теста - заголовок',
-                subheader=f'А это подзаголовок статьи татья {number}',
+                subheader=f'А это подзаголовок статьи {number}',
                 text=f'Ну и сама статья {number} - она вот такая, короткая.',
                 image=cls.uploaded if number == 19 else None
             )
@@ -219,6 +219,7 @@ class PostsViewsTests(TestCase):
         page = response.context.get('page')
         message = page[0]
         also_list = response.context.get('also_list')
+        form_field = response.context.get('form').fields.get('message_text')
         self.assertEqual(len(page), 2)
         self.assertNotIn(self.message2, page)
         self.assertEqual(message.direction, self.message.direction)
@@ -228,3 +229,62 @@ class PostsViewsTests(TestCase):
         for post in also_list:
             with self.subTest(post=post):
                 self.assertIsInstance(post, Post)
+        self.assertIsInstance(form_field, forms.CharField)
+
+    def test_new_shows_correct_context(self):
+        """В шаблон new передан правильный контекст."""
+        response = self.author_client.get(reverse('new_post'))
+        form_fields = response.context.get('form').fields
+        fields_should_be = {
+            'title': forms.CharField,
+            'subheader': forms.CharField,
+            'text': forms.CharField,
+            'image': forms.ImageField,
+        }
+        for field, expected in fields_should_be.items():
+            with self.subTest(field=field):
+                self.assertIsInstance(form_fields.get(field), expected)
+
+    def test_post_management_shows_correct_context(self):
+        """В шаблон post_management передан правильный контекст."""
+        response = self.author_client.get(reverse('post_management'))
+        post = response.context.get('page')[0]
+        expected_post = self.post[-1]
+        also_list = response.context.get('also_list')
+        self.assertEqual(post.id, expected_post.id)
+        self.assertEqual(post.title, expected_post.title)
+        self.assertEqual(post.subheader, expected_post.subheader)
+        self.assertEqual(post.image, self.jpg_url)
+        self.assertEqual(post.comment_count(), expected_post.comment_count())
+        self.assertEqual(post.like_count(), expected_post.like_count())
+        for post in also_list:
+            with self.subTest(post=post):
+                self.assertIsInstance(post, Post)
+
+    def test_message_reply_shows_correct_context(self):
+        """В шаблон message_reply передан правильный контекст."""
+        response = self.author_client.get(reverse('message_reply'))
+        dialogs = response.context.get('interlocutors')
+        self.assertEqual(dialogs, [self.user_one, self.user_two])
+
+    def test_post_index_cache_works(self):
+        """Проверяем работу кэша"""
+        cache.clear()
+        post = Post.objects.create(
+            title='Статья для тестирования кэша',
+            subheader='А это подзаголовок статьи',
+            text='Ну и сама статья.',
+        )
+        response1 = str(
+            self.author_client.get(reverse('index')).content
+        )
+        post.delete()
+        response2 = str(
+            self.author_client.get(reverse('index')).content
+        )
+        self.assertEqual(response1, response2)
+        cache.clear()
+        response3 = str(
+            self.author_client.get(reverse('index')).content
+        )
+        self.assertNotEqual(response1, response3)
